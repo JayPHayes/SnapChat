@@ -48,24 +48,26 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func btnNextTapped(_ sender: Any) {
-        performSegue(withIdentifier: "selectUserSegue", sender: nil)
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let imagesFolder = FIRStorage.storage().reference().child("images")
         
+        btnNext.isEnabled = false
+        
+        let imagesFolder = FIRStorage.storage().reference().child("images")
         let imageData = UIImagePNGRepresentation(imgSnap.image!)
         
         
-        
-        imagesFolder.child("images.png").put(imageData!, metadata: nil) { (metadata, error) in
+        imagesFolder.child("jayp.png").put(imageData!, metadata: nil) { (metadata, error) in
             if error != nil{
                 print("We have an Error: \(error)")
             } else {
                 print("We tried to upload!")
+                self.performSegue(withIdentifier: "selectUserSegue", sender: nil)
             }
         }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
     }
 }
 
