@@ -176,10 +176,10 @@
             </objects>
             <point key="canvasLocation" x="2589.5999999999999" y="138.0809595202399"/>
         </scene>
-        <!--View Controller-->
+        <!--Table View-->
         <scene sceneID="RPE-lE-Pbk">
             <objects>
-                <viewController id="WYW-uF-QOO" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="WYW-uF-QOO" customClass="SelectUserViewController" customModule="SnapChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pI9-WJ-8Y2"/>
                         <viewControllerLayoutGuide type="bottom" id="V4w-iu-fu1"/>
@@ -187,8 +187,34 @@
                     <view key="view" contentMode="scaleToFill" id="ncC-or-8dM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ock-oi-Een">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="1Jh-kS-hj8">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Jh-kS-hj8" id="Q2Y-Ys-RSG">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ock-oi-Een" firstAttribute="leading" secondItem="ncC-or-8dM" secondAttribute="leading" id="1be-UV-Tap"/>
+                            <constraint firstItem="ock-oi-Een" firstAttribute="top" secondItem="pI9-WJ-8Y2" secondAttribute="bottom" id="8aC-Bq-ckt"/>
+                            <constraint firstAttribute="trailing" secondItem="ock-oi-Een" secondAttribute="trailing" id="Qcv-r1-e9r"/>
+                            <constraint firstItem="V4w-iu-fu1" firstAttribute="top" secondItem="ock-oi-Een" secondAttribute="bottom" id="dF5-6q-6s3"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Table View" id="0yw-M4-T8I"/>
+                    <connections>
+                        <outlet property="tableView" destination="ock-oi-Een" id="lN7-zf-T91"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZ5-q7-Gca" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
