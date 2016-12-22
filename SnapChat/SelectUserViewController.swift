@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import Firebase
 
 class SelectUserViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var users: [User] = []
+    
+    var imageURL: String = ""
+    var desc: String = ""
+    var uuid: String = ""
+    
     
     
     override func viewDidLoad() {
@@ -20,18 +28,44 @@ class SelectUserViewController: UIViewController, UITableViewDelegate, UITableVi
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        tableView.reloadData()
+        FIRDatabase.database().reference().child("users").observe(.childAdded, with: { (snaphot) in
+            print(snaphot)
+            let usr = User()
+            
+            usr.email = snaphot.childSnapshot(forPath: "email").value as! String
+            usr.uid = snaphot.key
+            
+            self.users.append(usr)
+            self.tableView.reloadData()
+            
+        })
     }
 
     
     //MARK: - tableView Methods
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let usr = users[indexPath.row]
+        let snap = [
+            "from": FIRAuth.auth()!.currentUser!.email,
+            "description": self.desc,
+            "imageURL": self.imageURL,
+            "uuid": uuid
+            ]
+        FIRDatabase.database().reference().child("users").child(usr.uid).child("snaps").childByAutoId().setValue(snap)
+        navigationController!.popToRootViewController(animated: true)
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-        cell?.textLabel?.text = "Have a nice day."
+        let user = users[indexPath.row]
+        
+        cell?.textLabel?.text = user.email
         
         return cell!;
     }

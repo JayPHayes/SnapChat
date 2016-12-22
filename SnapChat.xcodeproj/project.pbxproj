@@ -18,6 +18,9 @@
 		97DEB18D1E0AEDD1001697CC /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DEB18C1E0AEDD1001697CC /* PictureViewController.swift */; };
 		97DEB18F1E0B033E001697CC /* SelectUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DEB18E1E0B033E001697CC /* SelectUserViewController.swift */; };
 		97DEB1931E0B0883001697CC /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97DEB1921E0B0883001697CC /* Media.xcassets */; };
+		97DEB1951E0B1B0A001697CC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DEB1941E0B1B0A001697CC /* User.swift */; };
+		97DEB1981E0B2E9D001697CC /* Snap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DEB1971E0B2E9D001697CC /* Snap.swift */; };
+		97DEB19A1E0B35BD001697CC /* ViewSnapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DEB1991E0B35BD001697CC /* ViewSnapViewController.swift */; };
 		A77696AE343B5BD5925B50DE /* Pods_SnapChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21576FD6F25123DE99465B03 /* Pods_SnapChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +40,9 @@
 		97DEB18C1E0AEDD1001697CC /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
 		97DEB18E1E0B033E001697CC /* SelectUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectUserViewController.swift; sourceTree = "<group>"; };
 		97DEB1921E0B0883001697CC /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		97DEB1941E0B1B0A001697CC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		97DEB1971E0B2E9D001697CC /* Snap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snap.swift; sourceTree = "<group>"; };
+		97DEB1991E0B35BD001697CC /* ViewSnapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSnapViewController.swift; sourceTree = "<group>"; };
 		F5E9BA27B1CEBFC42A9614AC /* Pods-SnapChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnapChat/Pods-SnapChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,7 +96,8 @@
 		97707E961E0844F30062F037 /* SnapChat */ = {
 			isa = PBXGroup;
 			children = (
-				97707EAD1E0854BE0062F037 /* Controllers */,
+				97707EAD1E0854BE0062F037 /* ViewControllers */,
+				97DEB1961E0B1B56001697CC /* Models */,
 				97707E971E0844F30062F037 /* AppDelegate.swift */,
 				97707E9B1E0844F30062F037 /* Main.storyboard */,
 				97707E9E1E0844F30062F037 /* Assets.xcassets */,
@@ -103,15 +110,16 @@
 			path = SnapChat;
 			sourceTree = "<group>";
 		};
-		97707EAD1E0854BE0062F037 /* Controllers */ = {
+		97707EAD1E0854BE0062F037 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				97707EAB1E0854B10062F037 /* SignInViewController.swift */,
 				97DEB18A1E0AE8FE001697CC /* SnapsViewController.swift */,
 				97DEB18C1E0AEDD1001697CC /* PictureViewController.swift */,
 				97DEB18E1E0B033E001697CC /* SelectUserViewController.swift */,
+				97DEB1991E0B35BD001697CC /* ViewSnapViewController.swift */,
 			);
-			name = Controllers;
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		97DEB1891E0AE8E0001697CC /* hold */ = {
@@ -120,6 +128,15 @@
 				97707E991E0844F30062F037 /* ViewController.swift */,
 			);
 			name = hold;
+			sourceTree = "<group>";
+		};
+		97DEB1961E0B1B56001697CC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				97DEB1941E0B1B0A001697CC /* User.swift */,
+				97DEB1971E0B2E9D001697CC /* Snap.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +271,9 @@
 				97DEB18F1E0B033E001697CC /* SelectUserViewController.swift in Sources */,
 				97707EAC1E0854B10062F037 /* SignInViewController.swift in Sources */,
 				97DEB18D1E0AEDD1001697CC /* PictureViewController.swift in Sources */,
+				97DEB1951E0B1B0A001697CC /* User.swift in Sources */,
+				97DEB19A1E0B35BD001697CC /* ViewSnapViewController.swift in Sources */,
+				97DEB1981E0B2E9D001697CC /* Snap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

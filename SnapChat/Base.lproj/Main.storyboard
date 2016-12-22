@@ -81,7 +81,7 @@
         <!--Snaps-->
         <scene sceneID="qKS-u0-xqM">
             <objects>
-                <viewController id="HmE-s0-T1b" customClass="SnapsViewController" customModule="SnapChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="HmE-s0-T1b" customClass="SnapsViewController" customModule="SnapChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4JD-UC-Tkf"/>
                         <viewControllerLayoutGuide type="bottom" id="mt3-Xg-mo1"/>
@@ -89,7 +89,29 @@
                     <view key="view" contentMode="scaleToFill" id="mf2-Lo-oun">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VHi-21-bpw">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="6fK-28-jfc">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6fK-28-jfc" id="7vn-db-s5y">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mt3-Xg-mo1" firstAttribute="top" secondItem="VHi-21-bpw" secondAttribute="bottom" id="1dQ-Fp-2Yt"/>
+                            <constraint firstItem="VHi-21-bpw" firstAttribute="top" secondItem="4JD-UC-Tkf" secondAttribute="bottom" id="3cX-jY-UbU"/>
+                            <constraint firstItem="VHi-21-bpw" firstAttribute="leading" secondItem="mf2-Lo-oun" secondAttribute="leading" id="EGo-aa-DBF"/>
+                            <constraint firstAttribute="trailing" secondItem="VHi-21-bpw" secondAttribute="trailing" id="xBd-2g-wMa"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Snaps" id="H17-E4-0OR">
                         <barButtonItem key="leftBarButtonItem" title="Log out" id="J4N-2t-SDF">
@@ -103,10 +125,57 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="VHi-21-bpw" id="fDs-m4-ftC"/>
+                        <segue destination="pGr-RN-6wr" kind="show" identifier="viewSnapSegue" id="lHM-13-h3q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6SV-ti-Kiw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1810.4000000000001" y="138.0809595202399"/>
+        </scene>
+        <!--Show image-->
+        <scene sceneID="t2G-dC-Iya">
+            <objects>
+                <viewController id="pGr-RN-6wr" customClass="ViewSnapViewController" customModule="SnapChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M77-PZ-IeC"/>
+                        <viewControllerLayoutGuide type="bottom" id="TWn-qh-FO3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pba-JC-Vhc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAy the force be with you." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Z2z-JT-5VI">
+                                <rect key="frame" x="21" y="636" width="333" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HcJ-Sc-zdN">
+                                <rect key="frame" x="26" y="74" width="323" height="552"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Z2z-JT-5VI" secondAttribute="trailing" constant="5" id="8Zr-e5-xJN"/>
+                            <constraint firstItem="TWn-qh-FO3" firstAttribute="top" secondItem="Z2z-JT-5VI" secondAttribute="bottom" constant="10" id="PxI-3V-GuL"/>
+                            <constraint firstItem="HcJ-Sc-zdN" firstAttribute="top" secondItem="M77-PZ-IeC" secondAttribute="bottom" constant="10" id="gSx-vM-bdR"/>
+                            <constraint firstItem="Z2z-JT-5VI" firstAttribute="top" secondItem="HcJ-Sc-zdN" secondAttribute="bottom" constant="10" id="iRS-ee-DwD"/>
+                            <constraint firstItem="Z2z-JT-5VI" firstAttribute="leading" secondItem="pba-JC-Vhc" secondAttribute="leadingMargin" constant="5" id="vWP-Ip-m6B"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HcJ-Sc-zdN" secondAttribute="trailing" constant="10" id="ypW-yq-Q8E"/>
+                            <constraint firstItem="HcJ-Sc-zdN" firstAttribute="leading" secondItem="pba-JC-Vhc" secondAttribute="leadingMargin" constant="10" id="zaw-ny-zxw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Show image" id="ggw-HO-Zkp"/>
+                    <connections>
+                        <outlet property="imgSnap" destination="HcJ-Sc-zdN" id="dNm-Bj-uof"/>
+                        <outlet property="lblSnap" destination="Z2z-JT-5VI" id="w2h-ng-5VC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nxs-pH-Vgj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1810" y="904"/>
         </scene>
         <!--Picture View Controller-->
         <scene sceneID="fbS-hK-uC7">

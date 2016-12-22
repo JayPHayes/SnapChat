@@ -17,6 +17,8 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        
     }
     
     
@@ -36,6 +38,9 @@ class SignInViewController: UIViewController {
                         print("We have an error: \(error)")
                     } else {
                         print("Created user succesfully!")
+                        
+                        FIRDatabase.database().reference().child("users").child(user!.uid).child("email").setValue(user!.email!)
+                        
                         self.performSegue(withIdentifier: "signinSegue", sender: nil)
                     }
                     

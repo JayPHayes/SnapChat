@@ -17,6 +17,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var btnNext: UIButton!
     
     var imagePicker = UIImagePickerController()
+    var uuid = "JayP_\(NSUUID().uuidString).jpg"
     
     
     override func viewDidLoad() {
@@ -25,6 +26,8 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Do any additional setup after loading the view.
         
         imagePicker.delegate = self
+        
+        btnNext.isEnabled = false;
     }
 
     //MARK: - image picker
@@ -32,6 +35,8 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
         imgSnap.image = image
+        btnNext.isEnabled = true;
+        
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
@@ -57,19 +62,24 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         
         
-        imagesFolder.child("JayP_\(NSUUID().uuidString).jpg").put(imageData, metadata: nil) { (metadata, error) in
+        imagesFolder.child(uuid).put(imageData, metadata: nil) { (metadata, error) in
             if error != nil{
                 print("We have an Error: \(error)")
             } else {
-                print(metadata?.downloadURL())
+                print("JPH: \(  metadata?.downloadURL()!.absoluteString  )")
                 
-                self.performSegue(withIdentifier: "selectUserSegue", sender: nil)
+                self.performSegue(withIdentifier: "selectUserSegue", sender: metadata?.downloadURL()?.absoluteString)
             }
         }
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextVC = segue.destination as! SelectUserViewController
+        
+        nextVC.imageURL = sender as! String
+        nextVC.desc = txtDescription.text!
+        nextVC.uuid = self.uuid
         
     }
 }
